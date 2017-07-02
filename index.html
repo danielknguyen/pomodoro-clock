@@ -9,6 +9,34 @@
 	<link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="styles/mobile.css">
 </head>
 <body>
+	<div id="clock-container"class="container">
+		<div id="clock-div">
+			<!-- title -->
+			<p id="title">Pomodoro Clock</p>
+			<div id="setTimer">
+				<!-- break length -->
+				<div id="breakLength">
+					<p class="count-title">Break Length</p>
+					<div class="subtract">-</div>
+					<div class="number">5</div>
+					<div class="add">+</div>
+				</div>
+				<!-- session length -->
+				<div id="sessionLength">
+					<p class="count-title">Session Length</p>
+					<div class="subtract">-</div>
+					<div class="number">5</div>
+					<div class="add">+</div>
+				</div>
+			</div>
+			<!-- this is where the countdown will be in -->
+			<div id="clock">
+				<div id="description">Session</div>
+				<div id="countDown">1:25:00</div>
+				<div id="reset"><span class="span-reset">Reset</span></div>
+			</div>
+		</div>
+	</div>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="script.js"></script>
