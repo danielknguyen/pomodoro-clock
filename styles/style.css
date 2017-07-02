@@ -23,7 +23,7 @@
 	font-family: 'Merriweather', serif;
 	color:#FFFFFF;
 }
-#breakLength,#sessionLength,.subtract,.add,.number {
+#breakLength,#sessionLength,.subtractBreak,.subtractSession,.addBreak,.addSession,.numberSession,.numberBreak {
 	display:inline-block;
 	color:#FFFFFF;
 }
@@ -38,7 +38,7 @@
 #sessionLength {
 	float:right;
 }
-.subtract,.add {
+.subtractBreak,.subtractSession,.addBreak,.addSession {
 	border:1px solid #BF55EC;
 	width:50px;
 	height:40px;
@@ -46,7 +46,11 @@
 	font-size:1.5em;
 	font-family: 'Merriweather', serif;
 }
-.number {
+.subtractBreak:hover,.subtractSession:hover,.addBreak:hover,.addSession:hover {
+	background-color:#BF55EC;
+	cursor: pointer; cursor: hand;
+}
+.numberBreak,.numberSession {
 	font-size:2em;
 	font-family: 'Audiowide', cursive;
 	margin:2px 10px;
