@@ -3,6 +3,7 @@
 	height:100%;
 	margin:0;
 	background-color:#22313F;
+	position:fixed;
 }
 #clock-div {
 	height:550px;
@@ -100,4 +101,5 @@ button:focus {
 	font-size:1.2em;
 	font-family: 'Merriweather', serif;
 	color:#FFFFFF;
+	user-select:none;
 }

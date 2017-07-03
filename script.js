@@ -92,6 +92,7 @@ $(document).ready(function(){
 				isClockPaused = false;
 				intervalId = setInterval(function(){
 					totalSecondsRemaining -= 1;
+					//when timer reaches 0 toggle to break and vice versa
 					if (totalSecondsRemaining === 0){
 						clearInterval(intervalId);
 						if(sessionToggle){
