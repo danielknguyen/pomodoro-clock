@@ -20,11 +20,12 @@ $(document).ready(function(){
 	displayNewValues();
 	//displays new updated values for break/session length and countdown
 	function displayNewValues(){
-		var minutes = Math.floor(totalSecondsRemaining / 60);
-		var seconds = totalSecondsRemaining % 60;
+		var hours = Math.floor(totalSecondsRemaining / 3600);
+		var minutes = Math.floor(totalSecondsRemaining % 3600 / 60);
+		var seconds = Math.floor(totalSecondsRemaining % 3600 % 60);
 		$('.numberBreak').text(breakNumber);
 		$('.numberSession').text(sessionNumber);
-		$('#countDown').text(pad(minutes, 2) + ':' + pad(seconds, 2));
+		$('#countDown').text(pad(hours,2) + ':' + pad(minutes,2) + ':' + pad(seconds, 2));
 	}
 
 	// function to reset timer back to default
