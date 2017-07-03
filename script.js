@@ -66,7 +66,7 @@ $(document).ready(function(){
 	});
 
 	//reset click handler to set clock back to default settings
-	$('.span-reset').on('click',function(){
+	$('#reset').on('click',function(){
 		clearInterval(intervalId);
 		isClockPaused = true;
 		resetTimer();
