@@ -52,31 +52,54 @@ $(document).ready(function(){
 
 	//click handler on break length's add button; increments by 1
 	$('.addBreak').on('click',function(){
-		breakNumber = breakNumber + 1;	
-		displayNewValues();
+		if(!isClockPaused) {
+			return;
+		} else {
+			$('#description').text('Break');
+			breakNumber = breakNumber + 1;
+			totalSecondsRemaining = breakNumber * 60;	
+			displayNewValues();
+		}
 	});
 	//click handler on session length's add button; increments by 1
 	$('.addSession').on('click',function(){
-		sessionNumber += 1;
-		totalSecondsRemaining = sessionNumber * 60;
-		displayNewValues()
+		if(!isClockPaused) {
+			return;
+		} else {
+			$('#description').text('Session');
+			sessionNumber = sessionNumber + 1;
+			totalSecondsRemaining = sessionNumber * 60;
+			displayNewValues()
+		}
+		
 	});
 	//click handler on break length's subtract button; decrements by 1
 	$('.subtractBreak').on('click',function(){
 		if(breakNumber == 1){
 			return;
 		}
-		breakNumber = breakNumber - 1;
-		displayNewValues();
+		if(!isClockPaused) {
+			return;
+		} else {
+			$('#description').text('Break');
+			breakNumber = breakNumber - 1;
+			totalSecondsRemaining = breakNumber * 60;
+			displayNewValues();
+		}
 	});
 	//click handler on break length's subtract button; decrements by 1
 	$('.subtractSession').on('click',function(){
 		if(sessionNumber == 1){
 			return;
 		}
-		sessionNumber -= 1;
-		totalSecondsRemaining = sessionNumber * 60;
-		displayNewValues()
+		if(!isClockPaused) {
+			return;
+		} else {
+			$('#description').text('Session');
+			sessionNumber = sessionNumber - 1;
+			totalSecondsRemaining = sessionNumber * 60;
+			displayNewValues();
+		}
 	});
 
 	//reset click handler to set clock back to default settings

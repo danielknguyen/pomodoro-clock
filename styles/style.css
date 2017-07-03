@@ -85,6 +85,7 @@ button:focus {
 	margin-top:25px;
 	font-family: 'Audiowide', cursive;
 	color:#FFFFFF;
+	user-select:none;
 }
 #countDown:hover {
 	cursor: pointer; cursor: hand;
