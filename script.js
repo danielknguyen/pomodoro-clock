@@ -9,6 +9,8 @@ $(document).ready(function(){
 	var isClockPaused = true;
 	//declaring identifier to assign current seconds remaining to
 	var intervalId;
+	//an off/on switch for session/break 
+	var sessionToggle = true;
 	
 	//adds a zero before a number if number is a single digit
 	function pad(num, size){
@@ -16,7 +18,6 @@ $(document).ready(function(){
 	    while (s.length < size) s = "0" + s;
 	    return s;
 	}
-
 	displayNewValues();
 	//displays new updated values for break/session length and countdown
 	function displayNewValues(){
@@ -27,11 +28,24 @@ $(document).ready(function(){
 		$('.numberSession').text(sessionNumber);
 		$('#countDown').text(pad(hours,2) + ':' + pad(minutes,2) + ':' + pad(seconds, 2));
 	}
-
+	//run break timer
+	function startBreak(){
+		totalSecondsRemaining = breakNumber * 60;
+		$('#description').text('Break');
+		$('#countDown').trigger('click');
+		displayNewValues();
+	}
+	//run session timer
+	function startSession(){
+		totalSecondsRemaining = sessionNumber * 60;
+		$('#description').text('Session');
+		$('#countDown').trigger('click');
+		displayNewValues();
+	}
 	// function to reset timer back to default
 	function resetTimer(){
 		breakNumber = 5;
-		sessionNumber = 5;
+		sessionNumber = 25;
 		totalSecondsRemaining = sessionNumber * 60;
 		displayNewValues();
 	}
@@ -80,6 +94,15 @@ $(document).ready(function(){
 					totalSecondsRemaining -= 1;
 					if (totalSecondsRemaining === 0){
 						clearInterval(intervalId);
+						if(sessionToggle){
+							sessionToggle = false;
+							isClockPaused = true;
+							startBreak();
+						} else {
+							sessionToggle = true;
+							isClockPaused = true;
+							startSession();
+						}
 					}
 					displayNewValues();
 				}, 1000);
@@ -90,4 +113,5 @@ $(document).ready(function(){
 			isClockPaused = true;
 		}
 	});
+
 });
