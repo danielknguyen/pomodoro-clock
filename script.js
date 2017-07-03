@@ -1,23 +1,25 @@
 $(document).ready(function(){
 	//grab the value of break length
 	var breakNumber = Number(document.getElementsByClassName('numberBreak')[0].innerHTML);
-
 	//grab the value of session length
 	var sessionNumber = Number(document.getElementsByClassName('numberSession')[0].innerHTML);
-
+	//converts total session number to seconds
 	var totalSecondsRemaining = sessionNumber * 60;
-
+	//an off/on switch for the countdown
 	var isClockPaused = true;
+	//declaring identifier to assign current seconds remaining to
+	var intervalId;
 	
-	displayNewValues();
-
-	function pad(num, size) {
+	//adds a zero before a number if number is a single digit
+	function pad(num, size){
 	    var s = num+"";
 	    while (s.length < size) s = "0" + s;
 	    return s;
 	}
 
-	function displayNewValues () {
+	displayNewValues();
+	//displays new updated values for break/session length and countdown
+	function displayNewValues(){
 		var minutes = Math.floor(totalSecondsRemaining / 60);
 		var seconds = totalSecondsRemaining % 60;
 		$('.numberBreak').text(breakNumber);
@@ -29,8 +31,14 @@ $(document).ready(function(){
 	function resetTimer(){
 		breakNumber = 5;
 		sessionNumber = 5;
+		totalSecondsRemaining = sessionNumber * 60;
 		displayNewValues();
+
+		console.log('Timer has been resetted');
+		console.log('break number: ' + breakNumber);
+		console.log('session number: ' + sessionNumber);
 	}
+
 	//click handler on break length's add button; increments by 1
 	$('.addBreak').on('click',function(){
 		breakNumber = breakNumber + 1;	
@@ -42,7 +50,6 @@ $(document).ready(function(){
 		totalSecondsRemaining = sessionNumber * 60;
 		displayNewValues()
 	});
-
 	//click handler on break length's subtract button; decrements by 1
 	$('.subtractBreak').on('click',function(){
 		if(breakNumber == 1){
@@ -62,19 +69,22 @@ $(document).ready(function(){
 	});
 
 	//reset click handler to set clock back to default settings
-	$('#reset').on('click',resetTimer);
+	$('.span-reset').on('click',function(){
+		clearInterval(intervalId);
+		isClockPaused = true;
+		resetTimer();
+	});
 
-	var intervalId;
-	$('#clock').on('click', function () {
-
-		if(isClockPaused) {
+	$('#countDown').on('click',function(){
+		//when clock is on decrement total seconds by 1 and assign that value to interval id
+		if(isClockPaused){
 			isClockPaused = false;
-			intervalId = setInterval(function () {
+			intervalId = setInterval(function(){
 				totalSecondsRemaining -= 1;
 				displayNewValues();
 			}, 1000);
 		} else {
-			// clear interval by id
+			// clear interval by id; stops decrementing
 			clearInterval(intervalId);
 			// set isClockedPaused to true
 			isClockPaused = true;

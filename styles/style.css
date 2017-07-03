@@ -79,6 +79,9 @@
 	font-family: 'Audiowide', cursive;
 	color:#FFFFFF;
 }
+#countDown:hover {
+	cursor: pointer; cursor: hand;
+}
 #reset {
 	text-align:center;
 	font-size:1.2em;
