@@ -4,7 +4,7 @@ $(document).ready(function(){
 	//grab the value of session length
 	var sessionNumber = Number(document.getElementsByClassName('numberSession')[0].innerHTML);
 	//converts total session number to seconds
-	var totalSecondsRemaining = sessionNumber * 60;
+	totalSecondsRemaining = sessionNumber * 60;
 	//an off/on switch for the countdown
 	var isClockPaused = true;
 	//declaring identifier to assign current seconds remaining to
@@ -33,10 +33,6 @@ $(document).ready(function(){
 		sessionNumber = 5;
 		totalSecondsRemaining = sessionNumber * 60;
 		displayNewValues();
-
-		console.log('Timer has been resetted');
-		console.log('break number: ' + breakNumber);
-		console.log('session number: ' + sessionNumber);
 	}
 
 	//click handler on break length's add button; increments by 1
@@ -78,11 +74,14 @@ $(document).ready(function(){
 	$('#countDown').on('click',function(){
 		//when clock is on decrement total seconds by 1 and assign that value to interval id
 		if(isClockPaused){
-			isClockPaused = false;
-			intervalId = setInterval(function(){
-				totalSecondsRemaining -= 1;
-				displayNewValues();
-			}, 1000);
+				isClockPaused = false;
+				intervalId = setInterval(function(){
+					totalSecondsRemaining -= 1;
+					if (totalSecondsRemaining === 0){
+						clearInterval(intervalId);
+					}
+					displayNewValues();
+				}, 1000);
 		} else {
 			// clear interval by id; stops decrementing
 			clearInterval(intervalId);
