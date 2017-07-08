@@ -69,8 +69,7 @@ button:focus {
 	height:325px;
 	margin:20vh auto;
 	border-radius:50%;
-	border:3px solid #000000;
-	border-color:#BF55EC;
+	border:3px solid #BF55EC;
 }
 #description {
 	text-align:center;

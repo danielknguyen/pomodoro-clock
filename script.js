@@ -11,6 +11,8 @@ $(document).ready(function(){
 	var intervalId;
 	//an off/on switch for session/break 
 	var sessionToggle = true;
+	//this is a sound that will be played to notify that session time has ended
+	var beepSound = new Audio('boopsound.wav');
 	
 	//adds a zero before a number if number is a single digit
 	function pad(num, size){
@@ -121,10 +123,12 @@ $(document).ready(function(){
 						if(sessionToggle){
 							sessionToggle = false;
 							isClockPaused = true;
+							beepSound.play();
 							startBreak();
 						} else {
 							sessionToggle = true;
 							isClockPaused = true;
+							beepSound.play();
 							startSession();
 						}
 					}
