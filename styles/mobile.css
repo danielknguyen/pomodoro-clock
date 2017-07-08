@@ -3,10 +3,11 @@
 	width:850px;
 }
 #title {
-	font-size:10em;
+	font-size:6.5em;
+	margin-bottom:10%;
 }
 .count-title {
-	font-size:3.5em;
+	font-size:3em;
 }
 #breakLength,#sessionLength {
 	height:75px;
