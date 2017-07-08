@@ -13,7 +13,6 @@ $(document).ready(function(){
 	var sessionToggle = true;
 	//this is a sound that will be played to notify that session time has ended
 	var beepSound = new Audio('boopsound.wav');
-	
 	//adds a zero before a number if number is a single digit
 	function pad(num, size){
 	    var s = num+"";
@@ -46,21 +45,19 @@ $(document).ready(function(){
 	}
 	// function to reset timer back to default
 	function resetTimer(){
+		$('#description').text('Session');
 		breakNumber = 5;
 		sessionNumber = 25;
 		totalSecondsRemaining = sessionNumber * 60;
 		displayNewValues();
 	}
-
 	//click handler on break length's add button; increments by 1
 	$('.addBreak').on('click',function(){
 		if(!isClockPaused) {
 			return;
 		} else {
-			$('#description').text('Break');
 			breakNumber = breakNumber + 1;
-			totalSecondsRemaining = breakNumber * 60;	
-			displayNewValues();
+			$('.numberBreak').text(breakNumber);
 		}
 	});
 	//click handler on session length's add button; increments by 1
@@ -73,7 +70,6 @@ $(document).ready(function(){
 			totalSecondsRemaining = sessionNumber * 60;
 			displayNewValues()
 		}
-		
 	});
 	//click handler on break length's subtract button; decrements by 1
 	$('.subtractBreak').on('click',function(){
@@ -83,10 +79,8 @@ $(document).ready(function(){
 		if(!isClockPaused) {
 			return;
 		} else {
-			$('#description').text('Break');
 			breakNumber = breakNumber - 1;
-			totalSecondsRemaining = breakNumber * 60;
-			displayNewValues();
+			$('.numberBreak').text(breakNumber);
 		}
 	});
 	//click handler on break length's subtract button; decrements by 1
@@ -103,14 +97,12 @@ $(document).ready(function(){
 			displayNewValues();
 		}
 	});
-
 	//reset click handler to set clock back to default settings
 	$('#reset').on('click',function(){
 		clearInterval(intervalId);
 		isClockPaused = true;
 		resetTimer();
 	});
-
 	$('#countDown').on('click',function(){
 		//when clock is on decrement total seconds by 1 and assign that value to interval id
 		if(isClockPaused){
@@ -141,5 +133,4 @@ $(document).ready(function(){
 			isClockPaused = true;
 		}
 	});
-
 });
