@@ -48,7 +48,6 @@
 	line-height:35px;
 	font-size:1.5em;
 	font-family: 'Merriweather', serif;
-
 }
 button:focus {
 	outline:none;
@@ -102,4 +101,26 @@ button:focus {
 	font-family: 'Merriweather', serif;
 	color:#FFFFFF;
 	user-select:none;
+}
+@media(max-width:550px){
+	#clock-div {
+		width:325px;
+	}
+	#title {
+		font-size:4em;
+	}
+	#breakLength,#sessionLength {
+		width:170px;
+	}
+	#breakLength {
+		margin-left:-32px;
+	}
+	.count-title {
+		font-size:1.2em;
+	}
+	#setTimer {
+		width:350px;
+		margin:0 auto;
+
+	}
 }
